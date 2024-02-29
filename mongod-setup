@@ -1,0 +1,40 @@
+----
+ubuntu:
+   12  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 656408E390CFB1F5
+   13  sudo apt-get update
+   14  apt-get install -y mongodb-org
+   15  service mongod status
+   16  service mongod start
+   17  service mongod status
+vi /etc/mongod.conf
+replication:
+  replSetName: myCluster
+sudo service mongod start
+mongo
+rs.initiate({
+  _id: "myCluster",
+  members: [
+    { _id: 0, host: "172.31.40.218:27017" }
+  ]
+})
+   
+----
+ec2-user:
+    8  sudo vi /etc/yum.repos.d/mongodb-org-4.4.repo
+	
+[mongodb-org-4.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc
+	
+    9  sudo yum install -y mongodb-org
+   10  systemctl enable mongod
+   11  systemctl start mongod
+   12  systemctl status mongod
+   13  vi /etc/mongod.conf
+replication:
+  replSetName: myCluster
+   14  systemctl restart mongod
+-----
