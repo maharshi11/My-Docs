@@ -1,0 +1,18 @@
+Server-B
+--------
+vi /etc/ssh/sshd_config
+PermitRootLogin yes
+PasswordAuthentication yes
+systemctl restart sshd
+set passwd for root (passwd root)
+
+Server-A
+---------
+ssh-keygen
+ssh-copy-id -i root@private.i.p
+
+
+adduser mohan
+su - mohan
+ssh-keygen
+usermod -aG sudo mohan
