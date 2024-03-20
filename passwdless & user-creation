@@ -26,3 +26,8 @@ change user passwd expiry days:
 chage -l username
 chage -M 45 username
 chage -E 2024-12-30 username
+
+unlock user:
+-----------
+faillock --user username --reset
+
