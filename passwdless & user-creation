@@ -16,3 +16,13 @@ adduser mohan
 su - mohan
 ssh-keygen
 usermod -aG sudo mohan
+
+user remove:
+-----------
+sudo userdel -r username
+
+change user passwd expiry days:
+------------------------------
+chage -l username
+chage -M 45 username
+chage -E 2024-12-30 username
