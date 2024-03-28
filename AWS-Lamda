@@ -1,0 +1,30 @@
+AWS-lamda serverless technology, it is a event based, here we can pay as per our usage.
+
+Task1: (start & Stop ec2 instance)
+=====
+Create IAM Policy (EC2-instance, Add ARN), IAM Role (Lamda, Select your IAM-Policy)
+=================================================================================
+https://repost.aws/knowledge-center/start-stop-lambda-eventbridge
+=================================================================
+
+Stop:
+
+import boto3
+region = 'ap-south-1'
+instances = ['i-0e0fbb223f6787dac']
+ec2 = boto3.client('ec2', region_name=region)
+
+def lambda_handler(event, context):
+    ec2.stop_instances(InstanceIds=instances)
+    print('stopped your instances: ' + str(instances))
+	
+Start:
+	
+import boto3
+region = 'ap-south-1'
+instances = ['i-0e0fbb223f6787dac']
+ec2 = boto3.client('ec2', region_name=region)
+
+def lambda_handler(event, context):
+    ec2.start_instances(InstanceIds=instances)
+    print('started your instances: ' + str(instances))	
