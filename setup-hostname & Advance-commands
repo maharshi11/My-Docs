@@ -1,0 +1,15 @@
+Set hostname in Linux:
+======================
+
+* hostname
+* hostname grafana
+* hostname
+* sudo nano /etc/hostname
+* sudo nano /etc/hosts
+* sudo systemctl restart hostname
+* systemctl restart hostname
+* hostname
+* systemctl restart prometheus
+
+commands:
+=========
