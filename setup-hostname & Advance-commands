@@ -13,3 +13,21 @@ Set hostname in Linux:
 
 commands:
 =========
+popd, pushd
+file without save/with save want to close use below command
+esp: ctrl+Z enter ctrl+Z enter
+fg (fore ground) - to open baground screen
+
+sudo !! - it will remain previous command
+
+history 
+!101  - 101 command will execute
+
+HISTTIMEFORMAT="%y-%m-%d %T "  (~/.bashrc)= to add permanently
+
+ls -l; echo "hello world" (execute 2 commands) -  if 1st is not execute also it will run 2nd command
+ls -l && echo "hello world" (execute 2 commands) - if 1st command is not execute it will not run 2nd command.
+
+truncate -s 0 hello.txt (it will remove all the content inside the file)
+
+nproc - it will cpu no in server
