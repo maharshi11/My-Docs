@@ -17,3 +17,75 @@ aws cli:
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
+--------------------------------------
+https://www.youtube.com/watch?v=zOJ7LNOHL74
+https://github.com/Channel908/DockerUI
+
+Install dashboard:
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+
+Create token:
+kubectl create serviceaccount admin-user -n kubernetes-dashboard
+kubectl create clusterrolebinding admin-user --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:admin-user
+kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get serviceaccount/admin-user -o jsonpath='{.secrets[0].name}') -o go-template='{{.data.token | base64decode}}'
+
+kubectl create clusterrole cr1 --verb list --resource pod,namespace
+kubectl create clusterrolebinding crb1 --clusterrole cr1 --serviceaccount=kubernetes-dashboard:admin-user
+
+Destroy everything we created for dashboard:
+kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+kubectl delete clusterrolebinding admin-user crb1
+kubectl delete clusterrole cr1
+-----
+dockerui-user-account.yaml
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+kubectl apply -f dockerui-user-account.yaml
+
+Create a ClusterRoleBinding
+cluster-role.yaml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+  
+kubectl apply -f cluster-role.yaml
+
+Get the Service Account Security Token
+kubectl -n kubernetes-dashboard create token admin-user
+------
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: test
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+--------------------------------------
