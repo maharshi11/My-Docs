@@ -29,5 +29,6 @@ chage -E 2024-12-30 username
 
 unlock user:
 -----------
+faillock --user username
 faillock --user username --reset
 
