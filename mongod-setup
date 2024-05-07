@@ -38,3 +38,44 @@ replication:
   replSetName: myCluster
    14  systemctl restart mongod
 -----
+
+
+
+Applicable for all flavors:
+--------------------------
+
+ALL NODES(Primary & Seconday):
+----------
+*  yum update
+*  yum upgrade -y
+*  vi /etc/yum.repos.d/mongodb-org-7.0.repo
+*  sudo yum install -y mongodb-org
+*  sudo yum install -y mongodb-org-7.0.7 mongodb-org-database-7.0.7 mongodb-org-server-7.0.7 mongodb-mongosh-7.0.7 mongodb-org-mongos-7.0.7 mongodb-org-tools-7.0.7
+*  exclude=mongodb-org,mongodb-org-database,mongodb-org-server,mongodb-mongosh,mongodb-org-mongos,mongodb-org-tools
+*  chown -R mongod:mongod /var/log/mongodb/
+*  chown -R mongod:mongod /var/lib/mongo/
+*  sudo systemctl start mongod
+*  sudo systemctl daemon-reload
+*  sudo systemctl status mongod
+*  sudo systemctl enable mongod
+*  sudo systemctl stop mongod
+*  cp /etc/mongod.conf /etc/mongod.conf-orig
+*  vi /etc/mongod.conf ---- bindIp: 0.0.0.0 & replSetName: "rs1" should be same in all nodes
+*  sudo systemctl status mongod
+*  sudo systemctl start mongod
+
+Primary:
+--------
+*  sudo systemctl status mongod
+*  sudo systemctl start mongod
+*  sudo systemctl status mongod
+*  mongosh
+*  cat  /etc/mongod.conf
+*  mongosh
+*  rs.initiate()
+*  rs.add("private IP")
+*  rs.status()
+*  exit
+
+https://www.youtube.com/watch?v=t_9QJTBbo30
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/
