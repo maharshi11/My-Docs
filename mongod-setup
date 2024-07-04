@@ -77,3 +77,30 @@ Primary:
 
 https://www.youtube.com/watch?v=t_9QJTBbo30
 https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/
+
+-------------
+trouble shoot if mongod not install use below commands:
+* yum clean all
+* yum makecache
+
+
+---------------------
+Usefull commands:
+---------------
+db.createUser({
+  user: "admin",
+  pwd: "admin123",
+  roles: [ { role: "userAdmin", db: "admin" }, "userAdmin" ]
+})
+
+db.mohan.insertOne({ name: "John", age: 30 })
+show collections
+db.mohan.find()
+db.mohan.count()
+db.mohan.insertOne({ name: "Alice", age: 25 })
+db.mohan.updateOne(
+  { name: "Alice" },
+  { $set: { age: 26 } }
+)
+show collections
+
