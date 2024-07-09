@@ -7,7 +7,10 @@ sudo /usr/pgsql-16/bin/postgresql-16-setup initdb
 sudo systemctl enable postgresql-16
 sudo systemctl start postgresql-16
 
-/var/lib/pgsql/16/data/pg_hba.conf
+/var/lib/pgsql/16/data/pg_hba.conf (md5 or passwd)
+
+sudo -i -u postgres
+psql
 
 ALTER ROLE mohan WITH CREATEDB;
 ALTER ROLE mohan WITH SUPERUSER;
