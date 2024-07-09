@@ -1,0 +1,26 @@
+https://www.postgresql.org/download/linux/redhat/
+
+sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+sudo dnf -qy module disable postgresql
+sudo dnf install -y postgresql16-server
+sudo /usr/pgsql-16/bin/postgresql-16-setup initdb
+sudo systemctl enable postgresql-16
+sudo systemctl start postgresql-16
+
+/var/lib/pgsql/16/data/pg_hba.conf
+
+ALTER ROLE mohan WITH CREATEDB;
+ALTER ROLE mohan WITH SUPERUSER;
+
+GRANT SELECT ON table_name TO tom;
+
+GRANT admin TO tom;
+REVOKE admin FROM tom;
+
+GRANT SELECT ON table_name TO tom;
+REVOKE SELECT ON table_name FROM tom;
+
+\du
+\du+ tom
+SELECT current_user;
+\q
