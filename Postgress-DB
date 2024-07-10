@@ -12,6 +12,8 @@ sudo systemctl start postgresql-16
 sudo -i -u postgres
 psql
 
+createuser --interactive
+
 ALTER ROLE mohan WITH CREATEDB;
 ALTER ROLE mohan WITH SUPERUSER;
 
