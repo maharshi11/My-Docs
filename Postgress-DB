@@ -29,3 +29,10 @@ REVOKE SELECT ON table_name FROM tom;
 \du+ tom
 SELECT current_user;
 \q
+\l
+
+psql -h localhost -U mohan -d postgres
+psql -h localhost -U tom -d postgres
+
+CREATE DATABASE "mohanDB" OWNER mohan;
+psql -h localhost -U mohan -d "mohanDB"
