@@ -1,9 +1,9 @@
 #!/bin/bash
 
 echo "installing java"
-#sudo yum install java -y
+sudo yum install java -y
 #sudo amazon-linux-extras install java-openjdk17 -y
-sudo yum install java-17-openjdk -y
+#sudo yum install java-17-openjdk -y
 
 echo "Download the Jenkins repository configuration"
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
