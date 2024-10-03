@@ -1,0 +1,43 @@
+[root@ip-172-31-40-98 multi-node]# history
+ *  cd /opt
+ *  yum install docker -y
+ *  system start docker
+ *  systemctl start docker
+ *  systemctl status docker
+ *  yum install git -y
+ *  sudo curl -L "https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ *  sudo chmod +x /usr/local/bin/docker-compose
+ *  git clone https://github.com/wazuh/wazuh-docker.git -b v4.4.5
+ *  ll
+ *  cd wazuh-docker/
+ *  ll
+ *  cd multi-node/
+ *  ll
+ *  docker-compose -f generate-indexer-certs.yml run --rm generator
+ *  ls -ld /opt/wazuh-docker/multi-node/config/wazuh_indexer_ssl_certs
+ *  mkdir -p /opt/wazuh-docker/multi-node/config/wazuh_indexer_ssl_certs
+ *  chown -R $USER:$USER /opt/wazuh-docker/multi-node/config/wazuh_indexer_ssl_certs
+ *  docker-compose -f generate-indexer-certs.yml run --rm generator
+ *  chmod -R 755 /opt/wazuh-docker/multi-node/config/wazuh_indexer_ssl_certs
+ *  ll
+ *  docker-compose up -d
+ *  docker ps
+ *  docker logs -f 901cd45c6be2
+ *  docker ps -a | grep wazuh1.indexer
+ *  docker logs 2f3fea910dd3
+ *  docker network ls
+ *  docker network inspect 8bd1c62f6f79
+ *  curl -k https://wazuh1.indexer:9200
+ *  yum install curl -y
+ *  curl -k https://wazuh1.indexer:9200
+ *  docker ps
+ *  sysctl vm.max_map_count
+ *  sysctl -w vm.max_map_count=262144
+ *  cp /etc/sysctl.conf /etc/sysctl.conf-orig
+ *  vi /etc/sysctl.conf
+ *  sysctl -p
+ *  docker-compose -f /opt/wazuh-docker/multi-node/docker-compose.yml up --force-recreate -d
+ *  docker ps
+ *  ll
+ *  cat docker-compose.yml
+ *  history
