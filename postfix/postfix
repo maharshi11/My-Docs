@@ -1,0 +1,49 @@
+https://linuxscriptshub.com/configure-smtp-with-gmail-using-postfix/
+====================================================================
+
+# yum update && yum install postfix mailx cyrus-sasl cyrus-sasl-plain
+# vi /etc/postfix/sasl_passwd
+[smtp.gmail.com]:587 rm4193155@gmail.com:mmth gdsb fbmz ktzt
+# chmod 600 /etc/postfix/sasl_passwd
+# cp /etc/postfix/main.cf /etc/postfix/main.cf-BKP
+# vi /etc/postfix/main.cf
+# postmap /etc/postfix/sasl_passwd
+# vi /etc/postfix/main.cf
+# postmap /etc/postfix/sasl_passwd
+# systemctl restart postfix && systemctl enable postfix
+# echo "Test email" | mail -s "Test Subject" monbsgl@gmail.com
+# yum install mailq -y
+# yum install mailx -y
+# echo "Test email" | mail -s "Test Subject" monbsgl@gmail.com
+# mailq
+# systemctl restart postfix
+# postsuper -d ALL
+# systemctl restart postfix
+# echo "Test email" | mail -s "Test Subject" monbsgl@gmail.com
+# systemctl restart postfix
+# echo "Test email" | mail -s "Test Subject" monbsgl@gmail.com
+# cat /var/log/maillog
+# echo "Test email hello" | mail -s "Test mail from mohan" monbsgl@gmail.com
+# echo "Test email hello" | mail -s "Test mail from mohan" mjmohan0123@gmail.com
+# mailq
+# cat /var/log/maillog
+# echo "Test email hello" | mail -s "Test mail from mohan babu saturday" mjmohan0123@gmail.com  monbsgl@gmail.com
+# mailq
+# cat /var/log/maillog
+# echo "Test email hello" | mail -s "Test mail from mohan babu saturday" mjmohan0123@gmail.com  monbsgl@gmail.com rm4193155@gmail.com
+
+
+
+password:
+google account - security - 2 factor authentication - ON #enabled
+generate app password - Postfix # set generated password here /etc/postfix/sasl_passwd
+
+# vi /etc/postfix/main.cf
+relayhost = [smtp.gmail.com]:587
+smtp_use_tls = yes
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options =
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_tls_CAfile = /etc/ssl/certs/ca-bundle.crt
+
+
