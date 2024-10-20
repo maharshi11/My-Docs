@@ -116,6 +116,7 @@ It looks like you are trying to use a client-go credential plugin that is not in
 #add below line in kubectl config file:
 
 path : /root/.kube
+vi config
 
 command: aws change it to command: /usr/local/bin/aws #confirm aws path with which aws
 ==========================BASIC Jenkins Kubectl script=====================
