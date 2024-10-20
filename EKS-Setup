@@ -91,3 +91,30 @@ spec:
         ports:
         - containerPort: 80
 --------------------------------------
+trouble shooting steps:
+error1:
+
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+
+#add below line in sudo visudo
+sudo visudo
+jenkins ALL=(ALL) NOPASSWD: ALL
+
+error2:
++ sudo kubectl get ns
+sudo: kubectl: command not found
+
+#add below line in script
+sudo /root/bin/kubectl
+
+error3:
++ sudo /root/bin/kubectl get ns
+Unable to connect to the server: getting credentials: exec: executable aws not found
+It looks like you are trying to use a client-go credential plugin that is not installed.
+
+#add below line in kubectl config file:
+
+path : /root/.kube
+
+command: aws change it to command: /usr/local/bin/aws #confirm aws path with which aws
