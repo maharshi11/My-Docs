@@ -46,4 +46,7 @@ smtp_sasl_security_options =
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 smtp_tls_CAfile = /etc/ssl/certs/ca-bundle.crt
 
+mail -s "main.cf config details" -a /etc/postfix/main.cf rmohanbabu12987456231@gmail.com < /dev/null
+df -hT | mail -s "Disk Usage Report" rmohanbabu12987456231@gmail.com
+
 
