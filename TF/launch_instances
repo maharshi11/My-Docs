@@ -1,0 +1,31 @@
+provider "aws" {
+  region = "ap-south-1"
+}
+
+resource "aws_instance" "example" {
+  ami              = "ami-0fd05997b4dff7aac"
+  instance_type    = "t2.micro"
+  key_name         = "test1"
+  subnet_id        = "subnet-0458025e048fac9f1"
+
+  tags = {
+    Name = "test1"
+  }
+}
+
+=============
+provider "aws" {
+  region = "ap-south-1"
+}
+
+resource "aws_instance" "example" {
+  count            = 5
+  ami              = "ami-0fd05997b4dff7aac"
+  instance_type    = "t2.micro"
+  key_name         = "test1"
+  subnet_id        = "subnet-0458025e048fac9f1"
+
+  tags = {
+    Name = "instance-${count.index + 1}" #"test1-#for 1 instance" 
+  }
+}
