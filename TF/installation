@@ -1,3 +1,12 @@
+Playlists links mentioned in the video (Complete Free)
+- DevOps Fundamentals: https://www.youtube.com/playlist?list=PLdpzxOOAlwvIKMhk8WhzN1pYoJ1YU8Csa
+- AWS Zero to Hero Playlist: https://www.youtube.com/playlist?list=PLdpzxOOAlwvLNOxX0RfndiYSt1Le9azze
+- Azure Zero to Hero Playlist: https://www.youtube.com/playlist?list=PLdpzxOOAlwvIcxgCUyBHVOcWs0Krjx9xR
+- Terraform Zero to Hero Playlist: https://www.youtube.com/playlist?list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf
+- Python for DevOps Playlist: https://www.youtube.com/playlist?list=PLdpzxOOAlwvKwTyYNJCUwGPvql0TrsPgv
+- Observability Zero to Hero: https://www.youtube.com/playlist?list=PLdpzxOOAlwvJUIfwmmVDoPYqXXUNbdBmb	
+----------------------------
+
 https://developer.hashicorp.com/terraform/install
 
 sudo yum install -y yum-utils shadow-utils
