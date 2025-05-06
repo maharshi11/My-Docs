@@ -1,0 +1,25 @@
+===============Master=============
+*  mkdir /myfiles
+*  cd myfiles/
+*  sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat/jenkins.repo
+*  sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io-2023.key
+*  sudo yum upgrade
+*  yum install java -y
+*  sudo yum install jenkins
+*  systemctl enable jenkins
+*  systemctl start jenkins
+*  systemctl status jenkins
+*  yum install git -y
+===============Slave===================
+*  yum install java -y
+*  useradd jenkins
+*  ll /home/
+*  chown jenkins:jenkins /home/jenkins
+*  hostname -i
+*  vi /etc/ssh/sshd_config
+*  systemctl restart sshd
+*  passwd jenkins
+===============Master=============
+*  su - jenkins
+*  ssh-keygen
+*  ssh-copy-id jenkins@172.31.5.251
