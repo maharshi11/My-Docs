@@ -61,3 +61,19 @@ source ~/.bashrc
 #to-setup secret password
 python3 -c "import crypt; print(crypt.crypt('12345', crypt.mksalt(crypt.METHOD_SHA512)))"
 
+Vault:
+ansible-vault create secrets.yml
+user_password: "$6$gF83GgVJ$..."
+
+Then in your playbook:
+vars_files:
+  - secrets.yml
+
+tasks:
+  - name: Add user mohan
+    user:
+      name: mohan
+      state: present
+      shell: /bin/bash
+      password: "{{ user_password }}"
+
