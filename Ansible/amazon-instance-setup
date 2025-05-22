@@ -57,3 +57,7 @@ ansible-playbook git-install.yml
 #To make ansible -i hosts DEV -m ping work from any path,
 export ANSIBLE_INVENTORY=/etc/ansible/hosts
 source ~/.bashrc
+
+#to-setup secret password
+python3 -c "import crypt; print(crypt.crypt('12345', crypt.mksalt(crypt.METHOD_SHA512)))"
+
