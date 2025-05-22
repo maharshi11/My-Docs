@@ -1,0 +1,38 @@
+[root@ip-172-31-10-71 qa]# cat user-add.yml
+- name: Useradd Mohan
+  hosts: all
+  become: yes
+  tasks:
+    - name: adduser mohan in all Vm
+      user:
+        name: mohan
+        state: present
+        shell: /bin/bash
+        password: "$6$V9CobSN1rop6SoMT$M1aY21Ec5DuLS8y1Lf3bEovt.MHOw.HVVm1S7UXS9AQ.T9pz7dXdSobAAdWMr4gPG0epN55f4IUzQZgT/4QWt1"
+        groups: wheel
+        append: yes
+
+[root@ip-172-31-10-71 qa]# cat remove-java.yml
+- name: remove java
+  hosts: all
+  become: yes
+  tasks:
+    - name: remove java from all servers
+      package:
+        name: java-17-amazon-corretto-*
+        state: absent
+
+[root@ip-172-31-10-71 qa]# cat httpd-install.yaml
+- name: install httpd
+  hosts: all
+  become: yes
+  tasks:
+    - name: intall httpd
+      yum:
+        name: httpd
+        state: present
+    - name: start and enable
+      service:
+        name: httpd
+        state: started
+        enabled: yes
